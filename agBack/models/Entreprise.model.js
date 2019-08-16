@@ -13,5 +13,6 @@ const EntrepriseSchema = mongoose.Schema({
     );
 
 // Schema.plugin(autoIncrement.mongoosePlugin);
+// Schema.plugin(autoIncrement.mongoosePlugin);
 
 module.exports = mongoose.model('entreprises', EntrepriseSchema);
