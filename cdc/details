@@ -1,0 +1,27 @@
+Nom du projet:
+Ag-Pub
+
+Probleme à resoudre:
+
+Utilisation des panneau publicitaire pour chaque produit
+
+Cibles:
+
+Entreprise qui vent des produits
+Chaque entreprise devrais louer le platform pour avoir la route d'accer au page d'administration
+
+Promesse:
+Ce serait facile de faire du publicité et vous pouvez le faire autant que vous voulez
+
+Solution:
+Numérisation du panneau publicitaire et la possibilité de l'utiliser pour pouvoir divulger des information la plus vites possibles mais proffessionnel
+
+
+Pour realiser le projet, je vais devoir utiliser quelque technologie emergente, pour le momment ce serais mongoDB.
+
+
+Technologie
+	côté backEnd: Nodejs et Express
+	côté FrontEnd: Reactjs
+	Base de donné: Mongodb/MongodbAtlas
+	partie integration: Bootstrap, HTML5/CSS3 et MDB si necessaire
