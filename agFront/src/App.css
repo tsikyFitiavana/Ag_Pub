@@ -1,0 +1,14 @@
+.flex {
+    flex-grow:1;
+   }
+       .logo{
+     color: '#fff';
+          text-decoration: 'none';
+    }
+       .menuButton {
+         margin-left: -12;
+        margin-right: 20;
+      }
+      .root {
+         flex-grow: 1;
+      }

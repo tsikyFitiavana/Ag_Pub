@@ -44,7 +44,7 @@ class Entre extends React.Component {
                 <form onSubmit={this.handlePost} className="md-form">
 
                     <input type="text" name="nom" onChange={this.onChange} placeholder="nom"/>
-                    <input type="text" name="mots_cles" onChange={this.onChange} placeholder="mots_cles"/>
+                    <input type="password" name="mots_cles" onChange={this.onChange} placeholder="mots_cles"/>
                     <input type="text" name="produitAuth" onChange={this.onChange} placeholder="produitAuth"/>
                     <input type="text" name="email" onChange={this.onChange} placeholder="email"/>
                     <input type="text" name="phones" onChange={this.onChange} placeholder="phones"/>

@@ -1,7 +1,35 @@
 import React, { Component } from "react";
+
+import { Link } from 'react-router-dom';
+
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+// import { withStyles } from '@material-ui/core/styles';
+
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import MonPub from "../Publications/MonPub"
+// import NavbarRightMenu from "./NavTest"
+import NavbarLeftMenu from "./LeftNavTest"
+
+
+//   flex: {
+//     flexGrow: 1
+//   },
+//   logo: {
+//     color: '#fff',
+//     textDecoration: 'none'
+//   },
+//   menuButton: {
+//     marginLeft: -12,
+//     marginRight: 20
+//   },
+//   root: {
+//     flexGrow: 1
+//   }
 
 class Dashboard extends Component {
   onLogoutClick = e => {
@@ -11,9 +39,35 @@ class Dashboard extends Component {
 
   render() {
     const { user } = this.props.auth;
-
-    return (
+    return (<div>
+      <div className="root">
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              className="menuButton"
+              color="inherit"
+              aria-label="Menu"
+            >
+               <NavbarLeftMenu /> 
+            </IconButton>
+            <Typography
+              className="flex"
+              variant="title"
+              color="inherit"
+            >
+              <Link className="logo" to="/">
+                MERN Social
+              </Link>
+            </Typography>
+            {user.name.split(" ")[0]}
+            <div>
+              {/* <NavbarRightMenu logoutUser={logoutUser} user={user} />  */}
+            </div>
+          </Toolbar>
+        </AppBar>
+      </div>
       <div style={{ height: "75vh" }} className="container valign-wrapper">
+        
         <div className="row">
           <div className="landing-copy col s12 center-align">
             <h4>
@@ -23,6 +77,7 @@ class Dashboard extends Component {
                 <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
               </p>
             </h4>
+            <MonPub/>
             <button
               style={{
                 width: "150px",
@@ -37,6 +92,7 @@ class Dashboard extends Component {
             </button>
           </div>
         </div>
+      </div>
       </div>
     );
   }
