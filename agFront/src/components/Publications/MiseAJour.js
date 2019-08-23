@@ -43,6 +43,7 @@ class MiseJ extends React.Component {
     const pub = new FormData();
     pub.append('image', this.uploadInput.files[0]);
     pub.append('nom', this.state.nom);
+    pub.append('clesEntreprPub', localStorage.getItem('cles'));
     pub.append('prix', this.state.prix);
     pub.append('marque', this.state.marque);
     pub.append('idUser', localStorage.id);

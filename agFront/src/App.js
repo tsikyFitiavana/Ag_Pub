@@ -17,7 +17,7 @@ import Entre from "./components/EntrepContract/ContractEntrep"
 import Publication from "./components/Publications/AjoutPub"
 import MiseJ from "./components/Publications/MiseAJour"
 import Tous from "./components/Publications/Tous"
-
+import PubEntre from "./components/Publications/PubEntreprise"
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -55,6 +55,7 @@ class App extends Component {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/dashboard/Pub" component={Publication} />
               <PrivateRoute exact path="/dashboard/MiseJ/:id" component={MiseJ} />
+              <PrivateRoute exact path="/dashboard/EntrePub" component={PubEntre} />
             </Switch>
           </div>
         </Router>

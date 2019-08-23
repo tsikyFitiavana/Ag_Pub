@@ -6,7 +6,7 @@ class Publication extends React.Component {
     super(props);
     this.state = {
         idUser:'',
-        idEntre:'',
+        clesEntreprPub:'',
         nom: '',
         description: '',
         marque: '',
@@ -24,10 +24,12 @@ onChange(event) {
 }
 handleUploadImage(ev) {
   ev.preventDefault();
-
+  console.log(localStorage.getItem('cles'));
+  
   const pub = new FormData();
     pub.append('image', this.uploadInput.files[0]);
     pub.append('nom', this.state.nom);
+    pub.append('clesEntreprPub', localStorage.getItem('cles'));
     pub.append('prix', this.state.prix);
     pub.append('marque', this.state.marque);
     pub.append('idUser', localStorage.id);
