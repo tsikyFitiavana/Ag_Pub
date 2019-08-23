@@ -8,6 +8,7 @@ const PublicationSchema = new Schema({
     marque: { type: String, required: true },
     prix: { type: String, required: true },
     idUser: Number,
+    clesEntreprPub: String,
     image: { type: String, required: true },
     
 }, {

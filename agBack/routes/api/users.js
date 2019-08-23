@@ -100,60 +100,70 @@ router.post("/login", (req, res) => {
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
+    console.log('ito'+user.cles);
     
     Entreprise.find()
       .then(atel => {
-        for (let i = 0; i < atel.length; i++) {
-          console.log(atel.length)
-          console.log("atel i "+atel[i])
-          console.log(atel.mots_cles)
-          if(user.cles != atel[i].mots_cles){
-            console.log('votsek lesy eh de ita oeh diso oh')
-            return res.status(404).json({ clesnotfound: "Vous avez un comptes Ag-pub mais malheuresement vous ne dispose pas le cles de votre entreprise" });
+        let recup = ''
+        let x = 1234
+        var bol = true
+        for(let i = 0; i < atel.length; i++){
+          
+          recup = atel[i].mots_cles;
+          if(x == atel[i].mots_cles){
+            bol =true
+            break;  
           }else{
-            console.log('ato izy zao marn kouh');
-            bcrypt.compare(password, user.password).then(isMatch => {
-              if (isMatch) {
-                // User matched
-                // Create JWT Payload
-                const payload = {
-                  id: user.id,
-                  name: user.name,
-                  cles: user.cles
-                };
-                console.log(user.id);
-                console.log('id anleh entreprise ty ah ' +atel[i]._id);
-    
-    
-    
-    
-                // Sign token
-                jwt.sign(
-                  payload,
-                  keys.secretOrKey,
-                  {
-                    expiresIn: 31556926 // 1 year in seconds
-                  },
-                  (err, token) => {
-                    res.json({
-                      idE: atel[i]._id,
-                      id: user.id,
-                      success: true,
-                      token: "Bearer " + token
-                    });
-                  }
-                );
-              } else {
-                return res
-                  .status(400)
-                  .json({ passwordincorrect: "Password incorrect" });
-              }
-            });
-            break;
+            bol = false
             
           }
-          console.log('efa aty anaty get entreprise sy boucle for' + user.cles)
         }
+        if(bol == true){
+          console.log('voila le atel[i].mots_cles existant', recup);
+          bcrypt.compare(password, user.password).then(isMatch => {
+            if (isMatch) {
+              // User matched
+              // Create JWT Payload
+              const payload = {
+                id: user.id,
+                name: user.name,
+                cles: user.cles
+              };
+              console.log(user.id);
+              console.log('ito le user.cles tokony alefanlah lesy eh '+user.cles);
+              
+  
+  
+  
+              // Sign token
+              jwt.sign(
+                payload,
+                keys.secretOrKey,
+                {
+                  expiresIn: 31556926 // 1 year in seconds
+                },
+                (err, token) => {
+                  res.json({
+                    cles: user.cles,
+                    id: user.id,
+                    success: true,
+                    token: "Bearer " + token
+                  });
+                }
+              );
+            } else {
+              return res
+                .status(400)
+                .json({ passwordincorrect: "Password incorrect" });
+            }
+          }); 
+        }else{
+          console.log('voila le atel[i].mots_cles inexistant'); 
+          return res.status(404).json({ clesnotfound: "Vous avez un comptes Ag-pub mais malheuresement vous ne dispose pas le cles de votre entreprise" });
+        }
+        
+        console.log('ty le recup'+recup);
+        
         // res.send(atel);
         console.log(atel);
         console.log(user);
@@ -224,7 +234,8 @@ router.post("/publication",  (req, res) => {
           prix: req.body.prix,
           description: req.body.description,
           image:nomImage + '.jpg',
-          marque: req.body.marque
+          marque: req.body.marque,
+          clesEntreprPub: req.body.clesEntreprPub
       });
       console.log(pub)
       pub.save()
@@ -241,6 +252,13 @@ router.post("/publication",  (req, res) => {
 //get one Pub
 router.get('/publication/:idPub',(req, res) => {
   let id = req.params.idPub;
+  Publications.findById(id, function (err, business){
+      res.json(business);
+  });
+});
+//Find one entreprise ty ah
+router.get('/entreprise/:entrep',(req, res) => {
+  let id = req.params.entrep;
   Publications.findById(id, function (err, business){
       res.json(business);
   });
@@ -282,7 +300,7 @@ router.put("/publication/:idPub",(req, res) => {
     description: req.body.description,
     image:nomImage + '.jpg',
     marque: req.body.marque,
-    idEntre: req.body.idEntre,
+    clesEntreprPub: req.body.clesEntreprPub
       
   }, {new: true})
   .then(user => {
@@ -345,13 +363,13 @@ router.get("/monProduit/:idUser",(req, res) => {
 
 // seulement le produit du scociete
 
-router.get("/societeProduit/:idEntre",(req, res) => {
-  Publications.find({idEntre:req.params.idEntre})
+router.get("/societeProduit/:clesEntreprPub",(req, res) => {
+  Publications.find({clesEntreprPub:req.params.clesEntreprPub})
       .then(profilchoix => {
           //console.log(unprofil)
           if (!profilchoix) {
               return res.status(404).send({
-                  message: "profil not found with id" + req.params.idEntre
+                  message: "profil not found with id" + req.params.clesEntreprPub
               });
           }
           else {
@@ -362,11 +380,11 @@ router.get("/societeProduit/:idEntre",(req, res) => {
       }).catch(err => {
           if (err.kind === 'ObjectId') {
               return res.status(404).send({
-                  message: "profil not found with id " + req.params.idEntre
+                  message: "profil not found with id " + req.params.clesEntreprPub
               });
           }
           return res.status(500).send({
-              message: "Something wrong retrieving profil with id " + req.params.idEntre
+              message: "Something wrong retrieving profil with id " + req.params.clesEntreprPub
           });
       });
 });
