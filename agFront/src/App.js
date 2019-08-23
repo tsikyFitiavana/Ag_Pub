@@ -14,6 +14,9 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import Entre from "./components/EntrepContract/ContractEntrep"
+import Publication from "./components/Publications/AjoutPub"
+import MiseJ from "./components/Publications/MiseAJour"
+import Tous from "./components/Publications/Tous"
 
 import "./App.css";
 
@@ -43,12 +46,15 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
+            <Route exact path="/tous" component={Tous} />
             <Route exact path="/" component={Landing} />
             <Route exact path="/test" component={Entre} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard/Pub" component={Publication} />
+              <PrivateRoute exact path="/dashboard/MiseJ/:id" component={MiseJ} />
             </Switch>
           </div>
         </Router>

@@ -65,9 +65,6 @@ class Register extends Component {
 
     return (
       <div className="container">
-        <ul>
-        { this.state.persons.map(person => <li>{person.nom}</li>)}
-      </ul>
         <div className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
@@ -119,7 +116,7 @@ class Register extends Component {
                   value={this.state.cles}
                   error={errors.cles}
                   id="cles"
-                  type="text"
+                  type="password"
                   className={classnames("", {
                     invalid: errors.cles
                   })}

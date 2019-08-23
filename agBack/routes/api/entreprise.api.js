@@ -1,1 +1,0 @@
-const Etreprise = require("../../models/Entreprise.model");
