@@ -5,9 +5,10 @@ import setAuthToken from "./utils/setAuthToken";
 
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { Provider } from "react-redux";
+
 import store from "./store";
 
-import Navbar from "./components/layout/Navbar";
+import Coms from "./components/commentaire/coms"
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
@@ -18,6 +19,7 @@ import Publication from "./components/Publications/AjoutPub"
 import MiseJ from "./components/Publications/MiseAJour"
 import Tous from "./components/Publications/Tous"
 import PubEntre from "./components/Publications/PubEntreprise"
+import Navbar from "./components/layout/Nav"
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -35,6 +37,7 @@ if (localStorage.jwtToken) {
     // Logout user
     store.dispatch(logoutUser());
 
+
     // Redirect to login
     window.location.href = "./login";
   }
@@ -42,14 +45,16 @@ if (localStorage.jwtToken) {
 class App extends Component {
   render() {
     return (
+      
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
+          <Navbar/>
             <Route exact path="/tous" component={Tous} />
             <Route exact path="/" component={Landing} />
             <Route exact path="/test" component={Entre} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/Coms" component={Coms} />
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />

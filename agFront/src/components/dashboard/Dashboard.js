@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import MonPub from "../Publications/MonPub"
+// import MiseJ from "../Publications/MiseAJour"
 // import NavbarRightMenu from "./NavTest"
 import NavbarLeftMenu from "./LeftNavTest"
 

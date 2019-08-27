@@ -14,6 +14,8 @@ const validateLoginInput = require("../../validation/login");
 const User = require("../../models/User");
 const Publications = require("../../models/Publication.model");
 const Entreprise = require("../../models/Entreprise.model");
+const Participants = require("../../models/participant.model");
+const Coms = require("../../models/commentaire.model");
 // find Entreprise
 router.get("/entreprise", (req, res) => {
   Entreprise.find()
@@ -105,7 +107,7 @@ router.post("/login", (req, res) => {
     Entreprise.find()
       .then(atel => {
         let recup = ''
-        let x = 1234
+        let x = user.cles
         var bol = true
         for(let i = 0; i < atel.length; i++){
           
@@ -203,10 +205,90 @@ router.post("/entreprise", (req, res) => {
 
     })
 })
+//insertion participant
+router.post("/participant", (req, res) => {
+  Participants.find()
+    .then(entre => {
+      var id;
+      if (entre.length == 0) {
+        id = 0
+      } else {
+        id = parseInt(entre[entre.length - 1]._id) + 1
+      }
+      const newEntre = new Participants({
+        _id: id,
+        nom: req.body.nom,
+        email: req.body.email,
+        phones: req.body.phones,
+        prenom: req.body.prenom
+      });
+      newEntre.save()
+        .then(entre => res.json(entre))
+        .catch(err => console.log(err));
+
+    })
+})
+//insertion Coms
+router.post("/coms", (req, res) => {
+  
+  Coms.find()
+    .then(entre => {
+      var id;
+      if (entre.length == 0) {
+        id = 0
+      } else {
+        id = parseInt(entre[entre.length - 1]._id) + 1
+      }
+      const newEntre = new Coms({
+        _id: id,
+        prenom_du_part: req.body.prenom_du_part,
+        idPart: req.body.idPart,
+        msg: req.body.msg,
+      });
+      newEntre.save()
+        .then(entre => res.json(entre))
+        .catch(err => console.log(err));
+
+    })
+})
+//get all coms
+router.get("/coms", (req, res) => {
+  Coms.find()
+    .then(users => {
+      res.send(users);
+    }).catch(err => {
+      res.status(500).send({
+        message: err.message || "Something wrong while retrieving profils."
+      });
+    });
+});
+//get mes coms
+
+router.get("/coms/:idPart",(req, res) => {
+  Coms.find({idPart:req.params.idPart})
+      .then(profilchoix => {
+          //console.log(unprofil)
+          if (!profilchoix) {
+              return res.status(404).send({
+                  message: "profil not found with id" + req.params.idPart
+              });
+          }
+          else {
+              res.send(profilchoix);
+          }
 
 
-
-
+      }).catch(err => {
+          if (err.kind === 'ObjectId') {
+              return res.status(404).send({
+                  message: "profil not found with id " + req.params.idPart
+              });
+          }
+          return res.status(500).send({
+              message: "Something wrong retrieving profil with id " + req.params.idPart
+          });
+      });
+});
 // Ajout de nouvelle Publication
 
 router.post("/publication",  (req, res) => {

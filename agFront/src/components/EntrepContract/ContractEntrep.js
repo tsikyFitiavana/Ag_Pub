@@ -41,7 +41,7 @@ class Entre extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <form onSubmit={this.handlePost} className="md-form">
+                <form onSubmit={this.handlePost} className="">
 
                     <input type="text" name="nom" onChange={this.onChange} placeholder="nom"/>
                     <input type="password" name="mots_cles" onChange={this.onChange} placeholder="mots_cles"/>

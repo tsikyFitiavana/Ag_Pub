@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import PopupModal from '../commentaire/modaleComment'
+import Comments from '../commentaire/lireComs'
+
+
 
 
 export default class Tous extends Component {
@@ -8,7 +13,10 @@ export default class Tous extends Component {
     constructor(props) {
         super(props);
         this.state = { produit: [] };
-
+    }
+    handleCha(e) {
+        this.setState({ text: e.target.value })
+        console.log('resultat recherche', this.state.text)
     }
     componentDidMount() {
         axios.get('http://localhost:5000/api/users/publication/')
@@ -29,49 +37,44 @@ export default class Tous extends Component {
     liste() {
         return <div>
             <div className="container-fluid">
-
                 {
                     (this.state.produit.length > 0) ? (this.state.produit.map((obj) => {
                         return <div className="container-fluid">
-                            <div id="ligne" className="row" key={obj._id}>
-                                <div className="container">
-                                    <img className="img-fluid " id="mgList"
-                                        src={'http://localhost:5000/api/users/image/' + obj.image}
-                                        alt="pdp" />
-                                </div>
-                                <div className="container">
-                                    <div className="container-fluid">
-                                        <div className="row">
-                                            <div className="container-fluid">
-                                                <ul>
-                                                    <li><h2>{obj.nom}</h2></li>
-                                                    <li>
-                                                        <ul>
-                                                            <li>Prix: {obj.prix} Ar</li>
-                                                        </ul>
-                                                        <ul>
-                                                            <li>Marque: {obj.marque} Ar</li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                                
-                                            </div>
-                                            <div className="container-fluid">
-                                                <div className="container-fluid">
-                                                    <h3><u>Descriptions</u> :</h3>
-                                                    <p>{obj.description}</p>
-                                                </div>
-                                            </div>
 
-                                        </div>
-                                        <div className="row">
-                                            <div className="container">
-                                                <Link to="/Particulier/" className="btn btn-sm btn-great light orange">M'INSCRIRE</Link>
+
+
+
+                            <MDBContainer>
+                                <MDBRow key={obj._id}>
+                                    <MDBCol size="1">col</MDBCol>
+                                    <MDBCol size="4">
+                                        <div>
+                                            <div className="contentImage">
+                                                <img className="img-fluid " id="mgList"
+                                                    src={'http://localhost:5000/api/users/image/' + obj.image}
+                                                    alt="pdp" />
                                             </div>
+                                            <p>Prix: {obj.prix} Ar</p>
+                                        </div>
+                                    </MDBCol>
+                                    <MDBCol size="6">
+                                        <h2>{obj.nom}</h2>
+                                        <div className="container-fluid">
+                                            <h3><u>Descriptions</u> :</h3>
+                                            <p>{obj.description}</p>
+                                            <p>Marque: {obj.marque}</p>
+                                        </div>
+                                    </MDBCol>
+                                    <MDBCol size="1">col</MDBCol>
+                                    <div className="row">
+                                        <div className="container">
+                                            <p className="bnt btn-primary"><PopupModal/></p>
+                                            <Comments/>
+                                            
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </MDBRow>
+                            </MDBContainer>
                         </div>
                     })) : ('')
                 }

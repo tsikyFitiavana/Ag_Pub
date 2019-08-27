@@ -37,7 +37,10 @@ app.use(passport.initialize());
 
 // Passport config
 require("./config/passport")(passport);
-
+app.get("/", function(req, res) {
+  //when we get an http get request to the root/homepage
+  res.send("Hello World");
+});
 // Routes
 app.use("/api/users", users);
 
