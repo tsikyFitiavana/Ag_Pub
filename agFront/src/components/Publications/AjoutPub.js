@@ -45,7 +45,7 @@ handleUploadImage(ev) {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" id="ajout">
         <form onSubmit={this.handleUploadImage}>
 
               <input className="form-control" type="text"

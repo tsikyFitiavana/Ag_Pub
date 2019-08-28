@@ -20,6 +20,8 @@ import MiseJ from "./components/Publications/MiseAJour"
 import Tous from "./components/Publications/Tous"
 import PubEntre from "./components/Publications/PubEntreprise"
 import Navbar from "./components/layout/Nav"
+import SignupPage from "./components/userClient/SignupPage"
+import LoginPage from "./components/userClient/LoginPage"
 import "./App.css";
 
 // Check for token to keep user logged in
@@ -49,8 +51,10 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-          <Navbar/>
-            <Route exact path="/tous" component={Tous} />
+          <Route  path="/tous" component={Navbar} />
+            <Route  path="/tous" component={Tous} />
+            <Route exact path="/clientLogin" component={LoginPage} />
+            <Route exact path="/clientRegister" component={SignupPage} />
             <Route exact path="/" component={Landing} />
             <Route exact path="/test" component={Entre} />
             <Route exact path="/register" component={Register} />

@@ -1,7 +1,6 @@
 import React from 'react'
 //import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Coms from './coms';
 
 class PopupModal extends React.Component {
     constructor(props, context) {
@@ -34,7 +33,6 @@ class PopupModal extends React.Component {
             <Modal.Header closeButton>
             </Modal.Header>
             <Modal.Body>
-              <Coms/>
             </Modal.Body>
           </Modal>
         </>

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const ComSchema = mongoose.Schema({
 
     _id: Number,
-    // idPart: Number,
+     identifientEntre: String,
     // prenom_du_part: String,
     msg: String,
 }

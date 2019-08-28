@@ -42,3 +42,52 @@ height: 35px;
 margin-top: 10px;
 margin-bottom: 10px;
 }
+#ajout {
+  display: none;
+}
+#pub-entreprise {
+  display: none;
+}
+
+
+.layout {
+  width: auto;
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.paper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  background-color: wheat;
+  box-shadow: 5px
+}
+.avatar {
+  margin: 50px;
+  background-color: red;
+}
+.submit {
+  margin-top: 20px;
+}
+.link {
+  text-decoration: none;
+}
+.footer {
+  margin-top: 20px;
+}
+.errorText {
+  color: #D50000;
+  margin-top: 5px;
+}
+.successText {
+  color: #32971E;
+  margin-top: 10px;
+  text-decoration: none;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -7,11 +8,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 // import { withStyles } from '@material-ui/core/styles';
-
+import Publication from "../Publications/AjoutPub"
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import MonPub from "../Publications/MonPub"
+import PubEntre from "../Publications/PubEntreprise"
 // import MiseJ from "../Publications/MiseAJour"
 // import NavbarRightMenu from "./NavTest"
 import NavbarLeftMenu from "./LeftNavTest"
@@ -31,16 +33,27 @@ import NavbarLeftMenu from "./LeftNavTest"
 //   root: {
 //     flexGrow: 1
 //   }
-
 class Dashboard extends Component {
+
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
-
+  componentDidMount() {
+    axios.get(`http://localhost:5000/api/users/entreprise/${localStorage.cles}`)
+      .then(response => {
+        console.log('user-entreprise.nom ==== ', response.data.nom)
+        localStorage.setItem('nomEntre', response.data.nom)
+        console.log('user-entreprise.nom ==== ', localStorage.getItem('nomEntre'))
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
   render() {
     const { user } = this.props.auth;
-    return (<div>
+    return (
+    <div>
       <div className="root">
         <AppBar position="static">
           <Toolbar>
@@ -49,7 +62,7 @@ class Dashboard extends Component {
               color="inherit"
               aria-label="Menu"
             >
-               <NavbarLeftMenu /> 
+              <NavbarLeftMenu />
             </IconButton>
             <Typography
               className="flex"
@@ -57,44 +70,55 @@ class Dashboard extends Component {
               color="inherit"
             >
               <Link className="logo" to="/">
-                MERN Social
+                Accueil
               </Link>
             </Typography>
-            {user.name.split(" ")[0]}
-            <div>
-              {/* <NavbarRightMenu logoutUser={logoutUser} user={user} />  */}
-            </div>
+            <Typography>
+            </Typography>
+            <Typography>
+              <Link to="/dashboard">
+                <button onClick={() => {
+                  document.getElementById('dashboard').style.display = "none"
+                  document.getElementById('ajout').style.display = "block"
+                  document.getElementById('pub-entreprise').style.display = "none"
+                }
+                }>Nouvelle produit</button>
+              </Link>
+            </Typography>
+            <Typography>
+              <button
+                onClick={this.onLogoutClick}
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+              >
+                Deconnecter
+            </button>
+            </Typography>
           </Toolbar>
         </AppBar>
       </div>
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        
+
+      <Publication />
+      <div>
+        <PubEntre />
+      </div>
+
+
+      <div style={{ height: "75vh" }} className="container valign-wrapper" id="dashboard">
+
+
         <div className="row">
           <div className="landing-copy col s12 center-align">
             <h4>
-              <b>Hey there,</b> {user.name.split(" ")[0]}
+              <b>Bonjour</b> {user.name.split(" ")[0]} 👏
               <p className="flow-text grey-text text-darken-1">
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
               </p>
             </h4>
-            <MonPub/>
-            <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
-            </button>
+            <MonPub />
+
           </div>
         </div>
       </div>
-      </div>
+    </div>
     );
   }
 }

@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const PublicationSchema = new Schema({
     _id: { type: Number, required: true },
     nom: { type: String, required: true },
+    comsNumber: { type: Number},
     description: { type: String, required: true },
     marque: { type: String, required: true },
     prix: { type: String, required: true },

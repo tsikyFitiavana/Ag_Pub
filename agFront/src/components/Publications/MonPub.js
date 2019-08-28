@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import MiseJ from '../Publications/MiseAJour'
 import { Link } from 'react-router-dom';
 
 export default class MonPub extends Component {
@@ -33,7 +33,6 @@ export default class MonPub extends Component {
         return <table className="table">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>NOM</th>
                             <th>DESCRIPTION</th>
                             <th>PRIX</th>
@@ -47,7 +46,6 @@ export default class MonPub extends Component {
                             (this.state.profil.length > 0) ? (this.state.profil.map((obj) => {
                                 
                                 return <tr key={obj._id}>
-                                    <td>{obj._id}</td>
                                     <td>{obj.nom}</td>
                                     <td>{obj.description}</td>
                                     <td>{obj.prix}</td>
@@ -57,7 +55,7 @@ export default class MonPub extends Component {
                                         <img width="150px" height="50px" src={'http://localhost:5000/api/users/image/'+obj.image} alt="pdp" />
                                     </td>
                                     <td>
-                                        <Link to={"/dashboard/MiseJ/"+ obj._id} className="btn btn-danger">Modifier</Link>
+                                        <MiseJ id={obj._id}/>
                                         <button onClick={this.delete} className="btn btn-great dark red">Delete</button>
                                     </td>
                                     {console.log(obj)}
