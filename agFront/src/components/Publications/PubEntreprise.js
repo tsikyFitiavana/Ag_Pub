@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 export default class PubEntre extends Component {
 
@@ -30,10 +30,12 @@ export default class PubEntre extends Component {
     }
     
     listeEntre() {
-        return <table className="table">
+
+        return <div id="pub-entreprise">
+            <h2>PRODUITS DE {localStorage.getItem('nomEntre')}</h2>
+        <table className="table" >
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>NOM</th>
                             <th>DESCRIPTION</th>
                             <th>PRIX</th>
@@ -46,7 +48,6 @@ export default class PubEntre extends Component {
                             (this.state.profil.length > 0) ? (this.state.profil.map((obj) => {
                                 
                                 return <tr key={obj._id}>
-                                    <td>{obj._id}</td>
                                     <td>{obj.nom}</td>
                                     <td>{obj.description}</td>
                                     <td>{obj.prix}</td>
@@ -62,6 +63,7 @@ export default class PubEntre extends Component {
                         }
                     </tbody>
                 </table>
+                </div>
     }
     render() {
         return (

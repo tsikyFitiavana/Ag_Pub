@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 class Entre extends React.Component {
     constructor(props) {
         super(props);
@@ -41,7 +43,7 @@ class Entre extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <form onSubmit={this.handlePost} className="md-form">
+                <form onSubmit={this.handlePost} className="">
 
                     <input type="text" name="nom" onChange={this.onChange} placeholder="nom"/>
                     <input type="password" name="mots_cles" onChange={this.onChange} placeholder="mots_cles"/>
@@ -49,7 +51,19 @@ class Entre extends React.Component {
                     <input type="text" name="email" onChange={this.onChange} placeholder="email"/>
                     <input type="text" name="phones" onChange={this.onChange} placeholder="phones"/>
                     
-                    <button id="validate" type="submit" className="btn btn-info">Valider</button>
+                    <button onClick={() => {
+            confirmAlert({
+              customUI: () => {
+                return (
+                  <div className='custom-ui'>
+                    <p>contrat bien fait</p>
+                    <center></center><a href="/" id="okajout" className="btn btn-primary">OK</a>
+                  </div>
+                );
+              }
+            });
+          }}
+                     id="validate" type="submit" className="btn btn-info">Valider</button>
                     
                     
 

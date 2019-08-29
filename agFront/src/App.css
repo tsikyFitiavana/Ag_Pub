@@ -1,14 +1,235 @@
-.flex {
-    flex-grow:1;
-   }
-       .logo{
-     color: '#fff';
-          text-decoration: 'none';
-    }
-       .menuButton {
-         margin-left: -12;
-        margin-right: 20;
-      }
-      .root {
-         flex-grow: 1;
-      }
+#login, #register span{
+  color: rgb(250, 2, 2);
+}
+#register{
+  color: whitesmoke;
+   padding-top: 20px;
+    width: 500px;
+    height: 700px;
+    background-color: rgb(0, 13, 26);
+    border-radius: 15px;
+    border: 2px solid rgb(5, 5, 5);
+    text-align: center;
+}
+#register #inputFileRegister{
+  width: 70%;
+  height: 35px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  }
+#login{
+  color: whitesmoke;
+   padding-top: 20px;
+    width: 350px;
+    height: 400px;
+    background-color: rgb(0, 13, 26);
+    border-radius: 10px;
+    border: 2px solid rgb(2, 2, 2);
+    text-align: center;
+}
+#buttonLogin{
+  color: rgb(255, 255, 255);
+    background-color:rgb(31, 48, 48);
+    height: 40px;
+    width: 100px;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0 0 rgb(23, 63, 63);
+}
+#login #inputFile{
+width: 70%;
+height: 35px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+#ajout {
+  display: none;
+}
+#pub-entreprise {
+  display: none;
+}
+
+
+.layout {
+  width: auto;
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.paper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  background-color: wheat;
+  box-shadow: 5px
+}
+.avatar {
+  margin: 50px;
+  background-color: red;
+}
+.submit {
+  margin-top: 20px;
+}
+.link {
+  text-decoration: none;
+}
+.footer {
+  margin-top: 20px;
+}
+.errorText {
+  color: #D50000;
+  margin-top: 5px;
+}
+.successText {
+  color: #32971E;
+  margin-top: 10px;
+  text-decoration: none;
+}
+.navList{
+  margin-right: 3.5em;
+  color: aliceblue;
+  font-size: 2.5vh;
+}
+.navList:hover{
+  border-right: 0.2vh solid rgb(5, 147, 241);
+  padding-right: 3.68vh;
+  color: aliceblue;
+  font-size: 2.5vh;
+  text-decoration: none;
+}
+#brandsLogo{
+ color:aliceblue; 
+ font-size: 4.5vh;
+ font-weight: bold;
+}
+#brandsLogo:hover{
+  color:aliceblue; 
+  font-size: 4.5vh;
+  font-weight: bold;
+  border-left: 0.2vh solid rgb(5, 147, 241);
+  padding-left:  5.68vh;
+ }
+ #prixProduits {
+   margin-top: 2.1vh;
+   border: 0.02vh #33b5e5 solid;
+   padding: 1.6vh;
+ }
+ #btnCommentaire{
+   cursor: pointer;
+  margin-right: 1.1vh;
+  border: 0.02vh #33b5e5 solid;
+  padding: 0.6vh;
+  background-color: rgb(5, 147, 241);
+  border-radius: 1.006vh;
+ }
+ #btnVoirecommentaire{
+  cursor: pointer;
+  margin-right: 1.1vh;
+  border: 0.02vh rgb(5, 147, 241) solid;
+  padding: 0.6vh;
+  background-color: #33b5e5;
+  border-radius: 1.006vh;
+ }
+ #btnCommande{
+   padding: 0.6vh;
+  cursor: pointer;
+  border: 0.02vh #33b5e5 solid;
+  background-color: rgb(5, 147, 241);
+  border-radius: 1.006vh;
+ }
+ #mdbContent{
+   border: 0.1vh solid #4285F4;
+   margin-bottom: 5.4vh;
+   margin-top: 3.4vh;
+   padding-bottom: 2.1vh;
+   padding-top: 3.1vh;
+ }
+#des {
+    width : 50%;
+    height: 4.2em;
+    overflow : hidden;
+    text-overflow : ellipsis;
+}
+ .more {
+  position:relative;
+}
+.more-text {
+  position:absolute;
+  bottom:0.5em;
+}
+.moins, 
+.hidetext,
+.more-text:focus .plus{
+  display:none;
+}
+.more-text:focus +.hidetext,
+.more-text:focus .moins{
+  display:block;
+  cursor: pointer;
+}
+.more-text:focus {
+  pointer-events:none;
+}
+#regarderCommentaire{
+  color: aliceblue;
+  border-radius: 1.3vh;
+  width: 80vh;
+  height: 43vh;
+  background-color: rgb(134, 132, 126);
+}
+#fermerRegardComment{
+  float: right;
+  cursor: pointer;
+  
+}
+#listCommentDiv{
+  margin:2.6vh;
+}
+#divConfirmComment{
+  padding-left: 9vh;
+  color: aliceblue;
+  border-radius: 1.3vh;
+  width: 80vh;
+  height: 43vh;
+  background-color: rgb(134, 132, 126);
+}
+#ShowImagePop{
+  color: aliceblue;
+  border-radius: 1.3vh;
+  width: 80vh;
+  height: 43vh;
+  background-color: rgb(134, 132, 126);
+}
+#msgIput{
+  width: 60vh;
+}
+#commanderPopUps{
+  padding-left: 4vh;
+  color: aliceblue;
+  border-radius: 1.3vh;
+  width: 70vh;
+  height: 69.9vh;
+  background-color: rgb(134, 132, 126);
+}
+.zonetext{
+  width: 60vh;
+}
+.mgListBas{
+  padding-top: 1.8vh;
+  padding-right: 1.8vh !important;
+  cursor: pointer;
+}
+ #mgListBasLeft{
+  margin-left: 1.8vh;
+  cursor: pointer;
+}
+/* #mgListBasRigth{
+  margin-right: 1010.8vh !important;
+}  */
+

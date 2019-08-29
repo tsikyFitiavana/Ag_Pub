@@ -1,24 +1,28 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
     return (
-      <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
-            <Link
-              to="/"
-              style={{
-                fontFamily: "monospace"
-              }}
-              className="col s5 brand-logo center black-text"
-            >
-              <i className="material-icons">code</i>
-              MERN
-            </Link>
-          </div>
-        </nav>
+      <div>
+        
+      <div className="header">
+        <h2 className="logo">Ag-Pub</h2>
+        <input type="checkbox" id="chk"/>
+        <label for="chk" className="show-menu-btn">
+        <i class="fas fa-bars"></i>
+        </label>
+        <ul className="menu">
+          <a href="#">Accueil</a>
+          <a href="/tous">Publiciter</a>
+          <a href="/">test</a>
+          <label for="chk" className="hide-menu-btn">
+        <i class="fas fa-times"></i>
+        </label>
+        </ul>
+      </div>
+      <div className="content">
+        <div>test</div>
+      </div>
       </div>
     );
   }

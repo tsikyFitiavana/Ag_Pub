@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-
+import { Link } from 'react-router-dom';
+import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -35,6 +36,22 @@ class NavbarLeftMenu extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <div className={classes.toolbar} />
+        <Link className={classes.link} to="/dashboard">
+            <MenuItem onClick={()=>{
+               document.getElementById('dashboard').style.display = "block"
+               document.getElementById('ajout').style.display = "none"
+               document.getElementById('pub-entreprise').style.display = "none"
+            } 
+             }>liste des produits</MenuItem>
+          </Link>
+          <Link className={classes.link} to="/dashboard">
+            <MenuItem onClick={()=>{
+               document.getElementById('dashboard').style.display = "none"
+               document.getElementById('ajout').style.display = "none";
+               document.getElementById('pub-entreprise').style.display = "block";
+            } 
+             }>liste des produits {localStorage.getItem('nomEntre')}</MenuItem>
+          </Link>
         <Divider />
         <List>
           {/* <FolderListItems user={user} /> */}
