@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -14,7 +16,9 @@ class MiseJ extends React.Component {
       marque: '',
       prix: '',
       show: false,
-      image: ''
+      image: '',
+      image1: '',
+      image2: ''
     }
 
     this.handleShow = this.handleShow.bind(this);
@@ -54,6 +58,8 @@ class MiseJ extends React.Component {
 
     const pub = new FormData();
     pub.append('image', this.uploadInput.files[0]);
+    pub.append('image1', this.uploadInput1.files[0]);
+    pub.append('image2', this.uploadInput2.files[0]);
     pub.append('nom', this.state.nom);
     pub.append('clesEntreprPub', localStorage.getItem('cles'));
     pub.append('prix', this.state.prix);
@@ -65,7 +71,11 @@ class MiseJ extends React.Component {
       pub
     ).then((body) => {
       this.setState({ image: `http://localhost:5000/api/users/publication/${body.data.image}` });
+      this.setState({ image1: `http://localhost:5000/api/users/publication/${body.data.image1}` });
+      this.setState({ image2: `http://localhost:5000/api/users/publication/${body.data.image2}` });
       console.log('ity ilay body.image', body.data.image);
+      console.log('ity ilay body.image1', body.data.image1);
+      console.log('ity ilay body.image2', body.data.image2);
     });
   }
 
@@ -106,6 +116,8 @@ class MiseJ extends React.Component {
 
 
               <input ref={(ref) => { this.uploadInput = ref; }} type="file" name="image" />
+              <input ref={(ref1) => { this.uploadInput1 = ref1; }} type="file" name="image1" />
+              <input ref={(ref2) => { this.uploadInput2 = ref2; }} type="file" name="image2" />
               
 
 
@@ -115,7 +127,19 @@ class MiseJ extends React.Component {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={this.handleClose}>Fermer</Button>
-            <button  className="btn btn-info">Publier</button>
+            <button onClick={() => {
+            this.handleClose()
+            confirmAlert({
+              customUI: () => {
+                return (
+                  <div className='custom-ui'>
+                    <p>Mise à jour avec succé</p>
+                    <center></center><a href="/dashboard" id="okajout" className="btn btn-primary">OK</a>
+                  </div>
+                );
+              }
+            });
+          }}  className="btn btn-info">Publier</button>
           </Modal.Footer>
           </form>
         </Modal>

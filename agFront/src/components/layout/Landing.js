@@ -1,24 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
 class Landing extends Component {
   render() {
+
+    let imgUrl = 'https://i.pinimg.com/originals/2b/84/53/2b8453d9c9f6e1e1c35dcb523e516478.jpg';
+
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
-            <h4>
-              <b>Build</b> a login/auth app with the{" "}
-              <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
-              scratch
-            </h4>
-            <p className="flow-text grey-text text-darken-1">
-              Create a (minimal) full-stack app with user authentication via
-              passport and JWTs
-            </p>
-            <br />
-            <div className="col s6">
-              <Link
+      <div>
+        <div className="card card-image" id="header" style={{
+          backgroundImage: 'url(' + imgUrl + ')',
+          backgroundSize: 'cover', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat',
+        }}>
+          <div className="text-white text-center rgba-stylish-strong py-5 px-4">
+            <div className="py-5">
+              <h2 id="h2accueil">ETES-VOUS INSATISFAIT DES STRATEGIES MARKETING COUTEUSES MAIS EGALEMENT LIMITEES ?</h2>
+              <p className="mb-4 pb-2 px-md-5 mx-md-5"><span id="spanheader">Le site Ag-Pub est fait pour vous</span>
+                <br /><br /> Nous vous offrons la possibilité de faire de la publicité pour votre produit <br />
+                en louant un site Web à un prix abordable et en vous proposant des offres<br/> renouvelables à votre guise.
+              </p>
+              <p>Si vous êtes intéressé, envoyez-nous vos informations afin que nous puissions<br/>  vous laisser le temps de remplir le contrat.</p>
+            </div>
+            <Link
                 to="/register"
                 style={{
                   width: "140px",
@@ -27,10 +29,8 @@ class Landing extends Component {
                 }}
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
               >
-                Register
+                S'inscrire
               </Link>
-            </div>
-            <div className="col s6">
               <Link
                 to="/login"
                 style={{
@@ -40,9 +40,8 @@ class Landing extends Component {
                 }}
                 className="btn btn-large btn-flat waves-effect white black-text"
               >
-                Log In
+                Connexion
               </Link>
-            </div>
           </div>
         </div>
       </div>

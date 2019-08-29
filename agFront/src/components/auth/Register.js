@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classnames from "classnames";
-
+import { MDBAnimation } from "mdbreact";
 import compose from 'recompose/compose';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -125,6 +125,9 @@ class Register extends Component {
 
     return (
       <div className="container">
+        {/* <MDBAnimation type="bounce" infinite>
+            <img className="img-fluid" alt="" src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png" />
+        </MDBAnimation> */}
         <React.Fragment>
         <CssBaseline />
         <main className={classes.layout}>

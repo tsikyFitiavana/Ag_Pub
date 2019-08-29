@@ -11,6 +11,8 @@ const PublicationSchema = new Schema({
     idUser: Number,
     clesEntreprPub: String,
     image: { type: String, required: true },
+    image1: { type: String, required: true },
+    image2: { type: String, required: true }
     
 }, {
         timestamps: true

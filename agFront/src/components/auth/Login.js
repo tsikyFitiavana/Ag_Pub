@@ -120,66 +120,73 @@ class Login extends Component {
     return (
       <div id="" className="container-fluid">
         <React.Fragment>
-        <CssBaseline />
-        <main className={classes.layout}>
-          <Paper className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockIcon />
-            </Avatar>
-            <Typography variant="headline">Se connecter</Typography>
-            <form noValidate onSubmit={this.onSubmit}>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="email">Email Address</InputLabel>
-                <Input
-                  id="inputFile"
-                  onChange={this.onChange}
-                  value={this.state.email}
-                  error={errors.email}
-                  name="email"
-                  type="email"
-                  className={classnames("", {
-                    invalid: errors.email || errors.emailnotfound
-                  })}
-                />
-                <span className={classes.errorText}>{errors.email}
-                {errors.emailnotfound}</span>
-              </FormControl>
-              <FormControl margin="normal" required fullWidth>
-                <InputLabel htmlFor="password">Password</InputLabel>
-                <Input
-                id="inputFile"
-                onChange={this.onChange}
-                value={this.state.password}
-                error={errors.password}
-                name="password"
-                type="password"
-                className={classnames("", {
-                  invalid: errors.password || errors.passwordincorrect
-                })}
-                />
-                <span className={classes.errorText}>{errors.password}
-                {errors.passwordincorrect}</span>
-              </FormControl>
+          <CssBaseline />
+          <main className={classes.layout}>
+            <Paper className={classes.paper}>
+              <Avatar className={classes.avatar}>
+                <LockIcon />
+              </Avatar>
+              <Typography variant="headline">Se connecter</Typography>
+              <form noValidate onSubmit={this.onSubmit}>
+                <span className="red-text">
+                  {errors.clesnotfound}
+                </span>
+                <FormControl margin="normal" required fullWidth>
+                  <InputLabel htmlFor="email">Email Address</InputLabel>
+                  <Input
+                    id="inputFile"
+                    onChange={this.onChange}
+                    value={this.state.email}
+                    error={errors.email}
+                    name="email"
+                    type="email"
+                    className={classnames("", {
+                      invalid: errors.email || errors.emailnotfound
+                    })}
+                  />
+                  <span className={classes.errorText}>{errors.email}
+                    {errors.emailnotfound}</span>
+                </FormControl>
+                <FormControl margin="normal" required fullWidth>
+                  <InputLabel htmlFor="password">Password</InputLabel>
+                  <Input
+                    id="inputFile"
+                    onChange={this.onChange}
+                    value={this.state.password}
+                    error={errors.password}
+                    name="password"
+                    type="password"
+                    className={classnames("", {
+                      invalid: errors.password || errors.passwordincorrect
+                    })}
+                  />
+                  <span className={classes.errorText}>{errors.password}
+                    {errors.passwordincorrect}</span>
+                </FormControl>
 
-              <Button
-                type="submit"
-                fullWidth
-                variant="raised"
-                color="primary"
-                className={classes.submit}
-              >
-                Connexion
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="raised"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Connexion
               </Button>
-            </form>
-            <Typography className={classes.footer} variant="body1">
-              {"Pas de copmte? "}
-              <NavLink to="/register" className={classes.link}>
-                Cree compte
+              </form>
+              <Typography className={classes.footer} variant="body1">
+                {"Pas de copmte? "}
+                <NavLink to="/register" className={classes.link}>
+                  Cree compte
               </NavLink>
-            </Typography>
-          </Paper>
-        </main>
-      </React.Fragment>
+                    &nbsp;&nbsp;
+                <NavLink to="/" className={classes.link}>
+                  >>Page d'accueill
+              </NavLink>
+              </Typography>
+            </Paper>
+          </main>
+        </React.Fragment>
       </div>
     );
   }
@@ -197,7 +204,7 @@ const mapStateToProps = state => ({
 });
 
 export default compose(
-  withStyles(styles),connect(
-  mapStateToProps,
-  { loginUser }
-))(Login);
+  withStyles(styles), connect(
+    mapStateToProps,
+    { loginUser }
+  ))(Login);

@@ -91,3 +91,145 @@ margin-bottom: 10px;
   margin-top: 10px;
   text-decoration: none;
 }
+.navList{
+  margin-right: 3.5em;
+  color: aliceblue;
+  font-size: 2.5vh;
+}
+.navList:hover{
+  border-right: 0.2vh solid rgb(5, 147, 241);
+  padding-right: 3.68vh;
+  color: aliceblue;
+  font-size: 2.5vh;
+  text-decoration: none;
+}
+#brandsLogo{
+ color:aliceblue; 
+ font-size: 4.5vh;
+ font-weight: bold;
+}
+#brandsLogo:hover{
+  color:aliceblue; 
+  font-size: 4.5vh;
+  font-weight: bold;
+  border-left: 0.2vh solid rgb(5, 147, 241);
+  padding-left:  5.68vh;
+ }
+ #prixProduits {
+   margin-top: 2.1vh;
+   border: 0.02vh #33b5e5 solid;
+   padding: 1.6vh;
+ }
+ #btnCommentaire{
+   cursor: pointer;
+  margin-right: 1.1vh;
+  border: 0.02vh #33b5e5 solid;
+  padding: 0.6vh;
+  background-color: rgb(5, 147, 241);
+  border-radius: 1.006vh;
+ }
+ #btnVoirecommentaire{
+  cursor: pointer;
+  margin-right: 1.1vh;
+  border: 0.02vh rgb(5, 147, 241) solid;
+  padding: 0.6vh;
+  background-color: #33b5e5;
+  border-radius: 1.006vh;
+ }
+ #btnCommande{
+   padding: 0.6vh;
+  cursor: pointer;
+  border: 0.02vh #33b5e5 solid;
+  background-color: rgb(5, 147, 241);
+  border-radius: 1.006vh;
+ }
+ #mdbContent{
+   border: 0.1vh solid #4285F4;
+   margin-bottom: 5.4vh;
+   margin-top: 3.4vh;
+   padding-bottom: 2.1vh;
+   padding-top: 3.1vh;
+ }
+#des {
+    width : 50%;
+    height: 4.2em;
+    overflow : hidden;
+    text-overflow : ellipsis;
+}
+ .more {
+  position:relative;
+}
+.more-text {
+  position:absolute;
+  bottom:0.5em;
+}
+.moins, 
+.hidetext,
+.more-text:focus .plus{
+  display:none;
+}
+.more-text:focus +.hidetext,
+.more-text:focus .moins{
+  display:block;
+  cursor: pointer;
+}
+.more-text:focus {
+  pointer-events:none;
+}
+#regarderCommentaire{
+  color: aliceblue;
+  border-radius: 1.3vh;
+  width: 80vh;
+  height: 43vh;
+  background-color: rgb(134, 132, 126);
+}
+#fermerRegardComment{
+  float: right;
+  cursor: pointer;
+  
+}
+#listCommentDiv{
+  margin:2.6vh;
+}
+#divConfirmComment{
+  padding-left: 9vh;
+  color: aliceblue;
+  border-radius: 1.3vh;
+  width: 80vh;
+  height: 43vh;
+  background-color: rgb(134, 132, 126);
+}
+#ShowImagePop{
+  color: aliceblue;
+  border-radius: 1.3vh;
+  width: 80vh;
+  height: 43vh;
+  background-color: rgb(134, 132, 126);
+}
+#msgIput{
+  width: 60vh;
+}
+#commanderPopUps{
+  padding-left: 4vh;
+  color: aliceblue;
+  border-radius: 1.3vh;
+  width: 70vh;
+  height: 69.9vh;
+  background-color: rgb(134, 132, 126);
+}
+.zonetext{
+  width: 60vh;
+}
+.mgListBas{
+  padding-top: 1.8vh;
+  padding-right: 1.8vh !important;
+  cursor: pointer;
+}
+ #mgListBasLeft{
+  margin-left: 1.8vh;
+  cursor: pointer;
+}
+/* #mgListBasRigth{
+  margin-right: 1010.8vh !important;
+}  */
+

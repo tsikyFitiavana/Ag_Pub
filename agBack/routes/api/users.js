@@ -42,8 +42,8 @@ router.post('/Commender/:params', async (req, res) => {
         var smtpTransport = nodemailer.createTransport({
           service: "Gmail",
           auth: {
-            user: "tsikybr@gmail.com",
-            pass: ""
+            user: "ze revenao ah",
+            pass: "io"
           }
         });
         var mailOptions = {
@@ -309,6 +309,8 @@ router.post("/coms/:_id", (req, res) => {
           prix: Pub.prix,
           description: Pub.description,
           image: Pub.image,
+          image1: Pub.image1,
+          image2: Pub.image2,
           marque: Pub.marque,
           clesEntreprPub: Pub.clesEntreprPub,
           comsNumber: Pub.comsNumber + 1
@@ -373,10 +375,24 @@ router.post("/publication", (req, res) => {
         id = parseInt(user[user.length - 1]._id) + 1
       }
       let imageFile = req.files.image;
+      let imageFile1 = req.files.image1;
+      let imageFile2 = req.files.image2;
       let nomImage = id
+      let nomImage1 = 'image1'+id
+      let nomImage2 = 'image2'+id
       res.setHeader('Content-Type', 'text/plain');
 
       imageFile.mv(`${__dirname}/public/${nomImage}.jpg`, function (err) {
+        if (err) {
+          return res.status(500).send(err);
+        }
+      });
+      imageFile1.mv(`${__dirname}/public/${nomImage1}.jpg`, function (err) {
+        if (err) {
+          return res.status(500).send(err);
+        }
+      });
+      imageFile2.mv(`${__dirname}/public/${nomImage2}.jpg`, function (err) {
         if (err) {
           return res.status(500).send(err);
         }
@@ -388,6 +404,9 @@ router.post("/publication", (req, res) => {
         prix: req.body.prix,
         description: req.body.description,
         image: nomImage + '.jpg',
+
+    image1: nomImage1 + '.jpg',
+    image2: nomImage2 + '.jpg',
         marque: req.body.marque,
         clesEntreprPub: req.body.clesEntreprPub,
         comsNumber: 0
@@ -454,11 +473,25 @@ router.put("/publication/:idPub", (req, res) => {
   }
   console.log('ity n params' + req.params.idPub)
   let imageFile = req.files.image;
+  let imageFile1 = req.files.image1;
+  let imageFile2 = req.files.image2;
   //console.log('inona ny ato o!'+imageFile)
-  let nomImage = req.params.idPub
+  let nomImage =req.params.idPub
+  let nomImage1 = 'image1'+req.params.idPub
+  let nomImage2 = 'image2'+req.params.idPub
   res.setHeader('Content-Type', 'text/plain');
 
   imageFile.mv(`${__dirname}/public/${nomImage}.jpg`, function (err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+  });
+  imageFile1.mv(`${__dirname}/public/${nomImage1}.jpg`, function (err) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+  });
+  imageFile2.mv(`${__dirname}/public/${nomImage2}.jpg`, function (err) {
     if (err) {
       return res.status(500).send(err);
     }
@@ -471,6 +504,8 @@ router.put("/publication/:idPub", (req, res) => {
     prix: req.body.prix,
     description: req.body.description,
     image: nomImage + '.jpg',
+    image1: nomImage1 + '.jpg',
+    image2: nomImage2 + '.jpg',
     marque: req.body.marque,
     clesEntreprPub: req.body.clesEntreprPub
 
@@ -504,6 +539,26 @@ router.get("/image/:image", (req, res) => {
     console.log("erreur be miitsy", e.stack);
   }
 })
+// //get image1
+// router.get("/image1/:image1", (req, res) => {
+//   try {
+//     let picture = fs.readFileSync('./routes/api/public/' + req.params.image1)
+//     res.write(picture)
+//     res.end()
+//   } catch (e) {
+//     console.log("erreur be miitsy", e.stack);
+//   }
+// })
+// //get image2
+// router.get("/image2/:image2", (req, res) => {
+//   try {
+//     let picture = fs.readFileSync('./routes/api/public/' + req.params.image2)
+//     res.write(picture)
+//     res.end()
+//   } catch (e) {
+//     console.log("erreur be miitsy", e.stack);
+//   }
+// })
 
 // seulement mon produit
 
