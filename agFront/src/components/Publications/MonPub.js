@@ -39,6 +39,8 @@ export default class MonPub extends Component {
                     <th>PRIX</th>
                     <th>MARQUE</th>
                     <th>PHOTO</th>
+                    <th>MINIPHOTO1</th>
+                    <th>MINIPHOTO2</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
@@ -53,7 +55,13 @@ export default class MonPub extends Component {
 
                             <td>{obj.marque}</td>
                             <td>
-                                <img width="150px" height="50px" src={'http://localhost:5000/api/users/image/' + obj.image} alt="pdp" />
+                                <img width="70px" height="50px" src={'http://localhost:5000/api/users/image/' + obj.image} alt="pdp" />
+                            </td>
+                            <td>
+                                <img width="70px" height="50px" src={'http://localhost:5000/api/users/image/' + obj.image1} alt="pdp" />
+                            </td>
+                            <td>
+                                <img width="70px" height="50px" src={'http://localhost:5000/api/users/image/' + obj.image2} alt="pdp" />
                             </td>
                             <td>
                                 <MiseJ id={obj._id} />

@@ -41,6 +41,8 @@ export default class PubEntre extends Component {
                             <th>PRIX</th>
                             <th>MARQUE</th>
                             <th>PHOTO</th>
+                            <th>MINIPHOTO</th>
+                            <th>MINIPHOTO</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,7 +56,13 @@ export default class PubEntre extends Component {
                                     
                                     <td>{obj.marque}</td>
                                     <td>
-                                        <img width="150px" height="50px" src={'http://localhost:5000/api/users/image/'+obj.image} alt="pdp" />
+                                        <img width="70px" height="50px" src={'http://localhost:5000/api/users/image/'+obj.image} alt="pdp" />
+                                    </td>
+                                    <td>
+                                        <img width="70px" height="50px" src={'http://localhost:5000/api/users/image/'+obj.image1} alt="pdp" />
+                                    </td>
+                                    <td>
+                                        <img width="70px" height="50px" src={'http://localhost:5000/api/users/image/'+obj.image2} alt="pdp" />
                                     </td>
                                     {console.log(obj)}
                                 </tr>

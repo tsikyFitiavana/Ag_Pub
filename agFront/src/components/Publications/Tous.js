@@ -170,7 +170,7 @@ export default class Tous extends Component {
                                                                                 let bol = ''
                                                                                 let checkenaVide = document.getElementById('msgIput').value
                                                                                 if (checkenaVide == '') {
-                                                                                    bol = prompt('etes vous sure de renvoyer un commentaire vide(oui/nom)')
+                                                                                    bol = prompt('etes vous sure de renvoyer un commentaire vide(oui/non)')
 
                                                                                     if (bol !== 'oui') {
                                                                                         confirmAlert({
@@ -198,7 +198,7 @@ export default class Tous extends Component {
                                                                                             customUI: () => {
                                                                                                 return (
                                                                                                     <div className='custom-ui'>
-                                                                                                        <p>Merci pour votre francise</p>
+                                                                                                        <p>Merci pour votre françeté</p>
                                                                                                         <center></center><a href="/tous" id="okajout" className="btn btn-primary">OK</a>
                                                                                                     </div>
                                                                                                 );
@@ -220,7 +220,7 @@ export default class Tous extends Component {
                                                                                         customUI: () => {
                                                                                             return (
                                                                                                 <div className='custom-ui'>
-                                                                                                    <p>ce ok</p>
+                                                                                                    <p>C'est Ok</p>
                                                                                                     <center></center><a href="/tous" id="okajout" className="btn btn-primary">OK</a>
                                                                                                 </div>
                                                                                             );
@@ -378,6 +378,9 @@ export default class Tous extends Component {
                     })) : ('')
                 }
             </div>
+            <footer className="footer">
+                copyright@brunoRAKOTONDRAZANAKA_Ag-Pub
+          </footer> 
         </div>
     }
     render() {

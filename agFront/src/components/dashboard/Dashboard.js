@@ -65,7 +65,7 @@ class Dashboard extends Component {
               <NavbarLeftMenu />
             </IconButton>
             <Typography
-              className="flex"
+              className="flex akisao"
               variant="title"
               color="inherit"
             >
@@ -75,17 +75,17 @@ class Dashboard extends Component {
             </Typography>
             <Typography>
             </Typography>
-            <Typography>
+            <Typography className=" akisao1">
               <Link to="/dashboard">
-                <button onClick={() => {
+                <button id="widifezako" onClick={() => {
                   document.getElementById('dashboard').style.display = "none"
                   document.getElementById('ajout').style.display = "block"
                   document.getElementById('pub-entreprise').style.display = "none"
-                }
-                }>Nouvelle produit</button>
+                } 
+                } className="btn btn-large waves-effect waves-light hoverable blue accent-3">Nouvelle produit</button>
               </Link>
             </Typography>
-            <Typography>
+            <Typography className=" akisao2">
               <button
                 onClick={this.onLogoutClick}
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"

@@ -44,6 +44,9 @@ class Landing extends Component {
               </Link>
           </div>
         </div>
+          <footer className="footer">
+                copyright@brunoRAKOTONDRAZANAKA_Ag-Pub
+          </footer> 
       </div>
     );
   }

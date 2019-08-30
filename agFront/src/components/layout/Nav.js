@@ -25,7 +25,7 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <MDBNavbar color="primary-color-dark" dark expand="md" style={{ marginTop: "1px" }} className="" scrolling >
+        <MDBNavbar color="primary-color-dark" dark expand="md" style={{ marginTop: "1px" }}  scrolling >
           <MDBNavbarBrand id="brandsLogo">
             Ag-Pub
           </MDBNavbarBrand>
