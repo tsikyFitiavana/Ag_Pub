@@ -177,19 +177,23 @@ margin-bottom: 10px;
   pointer-events:none;
 }
 #regarderCommentaire{
+
+  overflow-x: scroll;
   color: aliceblue;
   border-radius: 1.3vh;
-  width: 80vh;
+  width: 86vh;
   height: 43vh;
   background-color: rgb(134, 132, 126);
 }
 #fermerRegardComment{
   float: right;
   cursor: pointer;
+  position: relative;
   
 }
 #listCommentDiv{
   margin:2.6vh;
+  border: 1px blanchedalmond solid;
 }
 #divConfirmComment{
   padding-left: 9vh;
@@ -199,13 +203,10 @@ margin-bottom: 10px;
   height: 43vh;
   background-color: rgb(134, 132, 126);
 }
-#ShowImagePop{
-  color: aliceblue;
-  border-radius: 1.3vh;
-  width: 80vh;
-  height: 43vh;
-  background-color: rgb(134, 132, 126);
-}
+.widthena{
+  width: 70vh;
+  height: 70vh;
+} 
 #msgIput{
   width: 60vh;
 }
@@ -228,6 +229,9 @@ margin-bottom: 10px;
  #mgListBasLeft{
   margin-left: 1.8vh;
   cursor: pointer;
+}
+#mgListBasRigth0,#mgListBasLeft0 {
+  height: 20vh;
 }
 /* #mgListBasRigth{
   margin-right: 1010.8vh !important;

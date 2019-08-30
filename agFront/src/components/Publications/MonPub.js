@@ -11,6 +11,7 @@ export default class MonPub extends Component {
 
     }
     delete() {
+        console.log(localStorage.id)
         axios.get(`http://localhost:5000/api/users/publicationDeleted/${localStorage.id}`)
             .then(console.log('Deleted'))
             .catch(err => console.log(err))
@@ -56,36 +57,33 @@ export default class MonPub extends Component {
                             </td>
                             <td>
                                 <MiseJ id={obj._id} />
-                                <button onClick={() => {
+                                <button onClick={()=> 
+                                // {
+                                //     axios.get(`http://localhost:5000/api/users/publicationDeleted/${obj._id}`)
+                                //                                 .then(console.log('Deleted' ,obj._id))
+                                //                                  .catch(err => console.log(err))
+                                // }
+                                {
                                     confirmAlert({
                                         customUI: ({ onClose }) => {
                                             return (
                                                 <div className='custom-ui'>
-                                                    <p>êtes vous sure le vouloire suprimer {obj.nom}</p>
-                                                    <button id="okajout" className="btn btn-primary" onClick={() => {
+                                                    <p>êtes vous sure de suprimer {obj.nom}</p>
+                                                    <a  href="/dashboard"  id="okajout" className="btn btn-primary" onClick={() => {
 
-                                                        axios.get(`http://localhost:5000/api/users/publicationDeleted/${localStorage.id}`)
+                                                        axios.get(`http://localhost:5000/api/users/publicationDeleted/${obj._id}`)
                                                             .then(console.log('Deleted'))
                                                             .catch(err => console.log(err))
                                                         onClose();
-                                                        confirmAlert({
-                                                            customUI: () => {
-                                                                return (
-                                                                    <div className='custom-ui'>
-                                                                        <p>suppression reussi</p>
-                                                                        <a href="/dashbord" id="okajout" className="btn btn-primary">OK</a>
-                                                                    </div>
-                                                                );
-                                                            }
-                                                        })
-                                                    }}>oui</button>
+                                                        
+                                                    }}>oui</a>
                                                     <button onClick={onClose} id="bottonanuler" className="btn btn-secondary">Annuler</button>
                                                 </div>
                                             );
                                         }
                                     })
                                 }
-                                    // this.delete
+                                     //this.delete
                                 } className="btn btn-great dark red">Delete</button>
                             </td>
                             {console.log(obj)}

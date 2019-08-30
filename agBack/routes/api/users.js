@@ -27,47 +27,87 @@ router.post('/Commender/:params', async (req, res) => {
     if (user.length > 0) {
       return res.json('Email already exists.');
     }
-    const newUser = new UserClient({
-      email: req.body.email,
-      name: req.body.name,
-      adresse_exacte: req.body.adresse_exacte,
-      phones: req.body.phones,
-      nombreDecom: req.body.nombreDecom,
-      idProduitCommender: req.body.idProduitCommender
-    });
-    return newUser
-      .save()
-      .then((result) => {
-        console.log(result);
-        var smtpTransport = nodemailer.createTransport({
-          service: "Gmail",
-          auth: {
-            user: "ze revenao ah",
-            pass: "io"
-          }
+    let params1 = 0
+    Publications.findById(req.params.params)
+
+      .then(pub => {
+        console.log(pub)
+        console.log('req.params.params' + req.params.params)
+        params1 = req.params.params
+        const newUser = new UserClient({
+          email: req.body.email,
+          name: req.body.name,
+          adresse_exacte: req.body.adresse_exacte,
+          phones: req.body.phones,
+          nombreDecom: req.body.nombreDecom,
+          idProduitCommender: req.body.idProduitCommender
         });
-        var mailOptions = {
-          from:"tsikybr@gmail.com",
-          to:result.email,
-          subject: ' commende bien ressu',
-          text: result.name + "votre commende et bien ressu"
-        }
+        console.log('ty ny params1' + params1);
+        console.log('ito ny pub.params' + pub.params);
+
+        Publications.findByIdAndUpdate(params1, {
+          _id: pub.id,
+          idUser: pub.idUser,
+          nom: pub.nom,
+          prix: pub.prix,
+          description: pub.description,
+          image: pub.image,
+          image1: pub.image1,
+          image2: pub.image2,
+          marque: pub.marque,
+          clesEntreprPub: pub.clesEntreprPub,
+          comsNumber: pub.comsNumber
+        })
+          .then(updpub => {
+            console.log('ty n produit apres update', updpub);
+            console.log('ty n produit apres updpub.clesEntreprPub ', updpub.clesEntreprPub);
+
+            Entreprise.find({ mots_cles: updpub.clesEntreprPub })
+              .then(test => {
+                console.log("ty test" + test)
+                console.log("ty test content" , test[0].email)
+                return newUser
+                  .save()
+                  .then((result) => {
+                    console.log('ty za result tmpk' + result);
+                    var smtpTransport = nodemailer.createTransport({
+                      host: 'smtp.gmail.com',
+                      port: 465,
+                      secure: true,
+                      auth: {
+                        user: test[0].email,
+                        pass: test[0].emailPas
+                      }
+                    });
+                    var mailOptions = {
+                      from: test[0].email,
+                      to: result.email,
+                      subject: test[0].nom + " a bien ressu votre commande",
+                      text: result.name + " Vous avez commander " + result.nombreDecom +
+                        " de nos produits " + updpub.marque + ". On vas livres le produits au/à " + result.adresse_exacte + " ou on vous appelleras par cette numero: " +
+                        result.phones + " et on recupereras notres part aussi ! " + test[0].nom + " vous remercie de votre confience ... 👏"
+
+                    }
 
 
-        smtpTransport.sendMail(mailOptions, function (error, response) {
-          if (error) {
-            console.log('ato ah zany leh ky'+error);
-          } else {
-            console.log("ok");
+                    smtpTransport.sendMail(mailOptions, function (error, response) {
+                      if (error) {
+                        console.log('ato ah zany leh ky', error);
+                      } else {
+                        console.log("ok");
 
-          }
-        });
+                      }
+                    });
 
-        res.status(200).json(result);
+                    res.status(200).json(result);
+                  })
+                  .catch((err) => {
+                    res.status(500).json(err);
+                  });
+              })
+          })
       })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
+
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -252,9 +292,11 @@ router.post("/entreprise", (req, res) => {
         _id: id,
         nom: req.body.nom,
         email: req.body.email,
+        emailPas: req.body.emailPas,
         phones: req.body.phones,
         mots_cles: req.body.mots_cles,
         produitAuth: req.body.produitAuth
+
       });
       newEntre.save()
         .then(entre => res.json(entre))
@@ -315,7 +357,7 @@ router.post("/coms/:_id", (req, res) => {
           clesEntreprPub: Pub.clesEntreprPub,
           comsNumber: Pub.comsNumber + 1
         }).then(result => {
-          console.log(result);
+          console.log('ty ny result ref coms'+result);
 
 
           com.save()
@@ -378,8 +420,8 @@ router.post("/publication", (req, res) => {
       let imageFile1 = req.files.image1;
       let imageFile2 = req.files.image2;
       let nomImage = id
-      let nomImage1 = 'image1'+id
-      let nomImage2 = 'image2'+id
+      let nomImage1 = 'image1' + id
+      let nomImage2 = 'image2' + id
       res.setHeader('Content-Type', 'text/plain');
 
       imageFile.mv(`${__dirname}/public/${nomImage}.jpg`, function (err) {
@@ -405,8 +447,8 @@ router.post("/publication", (req, res) => {
         description: req.body.description,
         image: nomImage + '.jpg',
 
-    image1: nomImage1 + '.jpg',
-    image2: nomImage2 + '.jpg',
+        image1: nomImage1 + '.jpg',
+        image2: nomImage2 + '.jpg',
         marque: req.body.marque,
         clesEntreprPub: req.body.clesEntreprPub,
         comsNumber: 0
@@ -423,6 +465,13 @@ router.post("/publication", (req, res) => {
     })
 
 });
+// // recherce publication ty ah
+
+// router.post('/cherche', (req, res) => {
+//   var input = req.body
+//   Publications.find({prix : req.body.prix})
+// });
+
 //get one Pub
 router.get('/publication/:idPub', (req, res) => {
   let id = req.params.idPub;
@@ -476,9 +525,9 @@ router.put("/publication/:idPub", (req, res) => {
   let imageFile1 = req.files.image1;
   let imageFile2 = req.files.image2;
   //console.log('inona ny ato o!'+imageFile)
-  let nomImage =req.params.idPub
-  let nomImage1 = 'image1'+req.params.idPub
-  let nomImage2 = 'image2'+req.params.idPub
+  let nomImage = req.params.idPub
+  let nomImage1 = 'image1' + req.params.idPub
+  let nomImage2 = 'image2' + req.params.idPub
   res.setHeader('Content-Type', 'text/plain');
 
   imageFile.mv(`${__dirname}/public/${nomImage}.jpg`, function (err) {

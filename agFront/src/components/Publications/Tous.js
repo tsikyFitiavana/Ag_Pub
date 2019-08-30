@@ -73,7 +73,7 @@ export default class Tous extends Component {
                                                                     customUI: ({ onClose }) => {
                                                                         return (
                                                                             <div id="ShowImagePop" className="">
-                                                                                <img className="img-fluid " id="mgListBasRigth"
+                                                                                <img className="img-fluid widthena" id="mgListBasLeft" onClick={onClose}
                                                                                     src={'http://localhost:5000/api/users/image/' + obj.image1}
                                                                                     alt="pdp" />
                                                                             </div>)
@@ -83,7 +83,7 @@ export default class Tous extends Component {
 
                                                             }
                                                             }
-                                                                className="img-fluid" id="mgListBasLeft"
+                                                                className="img-fluid " id="mgListBasLeft0"
                                                                 src={'http://localhost:5000/api/users/image/' + obj.image1}
                                                                 alt="pdp" />
                                                         </MDBCol>
@@ -93,7 +93,7 @@ export default class Tous extends Component {
                                                                     customUI: ({ onClose }) => {
                                                                         return (
                                                                             <div id="ShowImagePop" className="">
-                                                                                <img className="img-fluid " id="mgListBasRigth"
+                                                                                <img className="img-fluid widthena" id="mgListBasRigth" onClick={onClose}
                                                                                     src={'http://localhost:5000/api/users/image/' + obj.image2}
                                                                                     alt="pdp" />
                                                                             </div>)
@@ -104,7 +104,7 @@ export default class Tous extends Component {
                                                             }
                                                             }
 
-                                                                className="img-fluid " id="mgListBasRigth"
+                                                                className="img-fluid " id="mgListBasRigth0"
                                                                 src={'http://localhost:5000/api/users/image/' + obj.image2}
                                                                 alt="pdp" />
                                                         </MDBCol>
@@ -159,7 +159,7 @@ export default class Tous extends Component {
 
                                                                         <h4 id="h2popups">Votre avis a propos de : {obj.nom}</h4>
                                                                         <FormControl margin="normal" required>
-                                                                            <InputLabel htmlFor="msgIput">Votre commentaire</InputLabel>
+                                                                            <InputLabel htmlFor="msgIput">votre critere</InputLabel>
                                                                             <Input id="msgIput" required className="zonetext2" name="msg" onChange={this.onChange} value={this.state.value} placeholder="" />
                                                                         </FormControl>
                                                                         {/* <input required className="zonetext2" name="prenom" placeholder="Entre votre prénom" onChange={this.onChange} value={this.state.value} /><br></br>
@@ -177,7 +177,7 @@ export default class Tous extends Component {
                                                                                             customUI: () => {
                                                                                                 return (
                                                                                                     <div className='custom-ui'>
-                                                                                                        <p>commentaire rejeter</p>
+                                                                                                        <p>avis vide</p>
                                                                                                         <center></center><a href="/tous" id="okajout" className="btn btn-primary">OK</a>
                                                                                                     </div>
                                                                                                 );
@@ -198,7 +198,7 @@ export default class Tous extends Component {
                                                                                             customUI: () => {
                                                                                                 return (
                                                                                                     <div className='custom-ui'>
-                                                                                                        <p>Commentaire  enregistrer</p>
+                                                                                                        <p>Merci pour votre francise</p>
                                                                                                         <center></center><a href="/tous" id="okajout" className="btn btn-primary">OK</a>
                                                                                                     </div>
                                                                                                 );
@@ -220,7 +220,7 @@ export default class Tous extends Component {
                                                                                         customUI: () => {
                                                                                             return (
                                                                                                 <div className='custom-ui'>
-                                                                                                    <p>Commentaire  enregistrer</p>
+                                                                                                    <p>ce ok</p>
                                                                                                     <center></center><a href="/tous" id="okajout" className="btn btn-primary">OK</a>
                                                                                                 </div>
                                                                                             );
@@ -242,7 +242,7 @@ export default class Tous extends Component {
                                                                 );
                                                             }
                                                         });
-                                                    }}><span id="btnCommentaire">comment </span> {obj.comsNumber}</p>
+                                                    }}><span id="btnCommentaire">Remarques </span> {obj.comsNumber} </p>
                                                 </MDBCol>
                                                 <MDBCol size="4">
                                                     <button id="btnVoirecommentaire" onClick={() => {
@@ -281,7 +281,7 @@ export default class Tous extends Component {
                                                     }
 
 
-                                                    }>voire comment</button>
+                                                    }>voire message</button>
                                                 </MDBCol>
                                                 <MDBCol size="4">
                                                     <button id="btnCommande" onClick={() => {

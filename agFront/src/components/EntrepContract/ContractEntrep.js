@@ -9,6 +9,7 @@ class Entre extends React.Component {
             nom: '',
             mots_cles: '',
             produitAuth: '',
+            emailPas:'',
             email: '',
             phones: ''
         }
@@ -30,6 +31,7 @@ class Entre extends React.Component {
       mots_cles: this.state.mots_cles,
       produitAuth: this.state.produitAuth,
       email: this.state.email,
+      emailPas: this.state.emailPas,
       phones: this.state.phones
     };
     axios.post(`http://localhost:5000/api/users/entreprise`, user)
@@ -49,6 +51,7 @@ class Entre extends React.Component {
                     <input type="password" name="mots_cles" onChange={this.onChange} placeholder="mots_cles"/>
                     <input type="text" name="produitAuth" onChange={this.onChange} placeholder="produitAuth"/>
                     <input type="text" name="email" onChange={this.onChange} placeholder="email"/>
+                    <input type="password" name="emailPas" onChange={this.onChange} placeholder="mot de passe de votre email"/>
                     <input type="text" name="phones" onChange={this.onChange} placeholder="phones"/>
                     
                     <button onClick={() => {
